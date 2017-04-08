@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    environment:
+      - NGINX_HOST=dot.com
+    networks:
+      - front
+      - back
+
+  jenkins:
+    image: jenkins:alpine
+    volumes:
+      - /opt/jenkins_home: /var/jenkins_home
+    expose:
+      - "8080"
+      - "50000" 
+    networks:
+      - back  
+
+networks:
+  front:
+    driver: bridge
+  back:
+    driver: bridge
