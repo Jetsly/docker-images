@@ -6,9 +6,7 @@ services:
     ports:
       - "80:80"
     environment:
-      - NGINX_HOST=dot.com
-    links:
-      - jenkins: jenkins  
+      - NGINX_HOST=dot.com 
     networks:
       - front
       - back
@@ -16,7 +14,7 @@ services:
   jenkins:
     image: jenkins:alpine
     volumes:
-      - /opt/jenkins_home: /var/jenkins_home
+      - /opt/jenkins_home:/var/jenkins_home
     expose:
       - "8080"
       - "50000" 
