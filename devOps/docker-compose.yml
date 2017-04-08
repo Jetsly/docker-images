@@ -6,7 +6,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ~/nginx:/etc/nginx/conf.d
+      - /home/ddot/nginx:/etc/nginx/conf.d
     environment:
       - NGINX_HOST=dot.com 
     networks:
@@ -16,7 +16,7 @@ services:
   jenkins:
     image: jenkins:alpine
     volumes:
-      - ~/jenkins_home:/var/jenkins_home
+      - /home/ddot/jenkins_home:/var/jenkins_home
     expose:
       - "8080"
       - "50000" 
