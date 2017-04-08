@@ -7,6 +7,8 @@ services:
       - "80:80"
     environment:
       - NGINX_HOST=dot.com
+    links:
+      - jenkins: jenkins  
     networks:
       - front
       - back
