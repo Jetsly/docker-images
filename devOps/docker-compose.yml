@@ -5,6 +5,8 @@ services:
     image: nginx:alpine
     ports:
       - "80:80"
+    links: 
+      - jenkins:myjenkins  
     volumes:
       - /home/ddot/nginx:/etc/nginx/conf.d
     environment:
