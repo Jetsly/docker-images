@@ -5,13 +5,14 @@ services:
     image: nginx:alpine
     ports:
       - "80:80"
+      - "50000:50000"
     links: 
       - jenkins:myjenkins  
     volumes:
       - /home/ddot/nginx/conf:/etc/nginx/conf.d
       - /home/ddot/nginx/www:/www
     networks:
-      - front
+      - front 
       - back
 
   jenkins:
