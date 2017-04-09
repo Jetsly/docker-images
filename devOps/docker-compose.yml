@@ -8,9 +8,8 @@ services:
     links: 
       - jenkins:myjenkins  
     volumes:
-      - /home/ddot/nginx:/etc/nginx/conf.d
-    environment:
-      - NGINX_HOST=dot.com 
+      - /home/ddot/nginx/conf:/etc/nginx/conf.d
+      - /home/ddot/nginx/www:/www
     networks:
       - front
       - back
@@ -19,6 +18,7 @@ services:
     image: jenkins:alpine
     volumes:
       - /home/ddot/jenkins_home:/var/jenkins_home
+      - /home/ddot/nginx/www:/www
     expose:
       - "8080"
       - "50000" 
