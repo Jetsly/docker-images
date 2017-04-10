@@ -5,15 +5,28 @@ services:
     image: nginx:alpine
     ports:
       - "80:80"
+      - "4873:4873"
       - "50000:50000"
     links: 
       - jenkins:myjenkins  
+      - sinopia:mysinopia
     volumes:
       - /home/ddot/nginx/conf:/etc/nginx/conf.d
       - /home/ddot/nginx/www:/www
     networks:
       - front 
       - back
+
+  sinopia:
+    image: keyvanfatehi/sinopia
+    volumes:
+      - /home/ddot/sinopia/config.yaml:/opt/sinopia/config.yaml
+      - /home/ddot/sinopia/storage:/opt/sinopia/storage
+      - /home/ddot/sinopia/htpasswd:/opt/sinopia/htpasswd
+    expose:
+      - "4873" 
+    networks:
+      - back  
 
   jenkins:
     image: jenkins:alpine
