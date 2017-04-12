@@ -19,7 +19,7 @@ services:
       - back
 
   jenkins:
-    image: jenkins:latest
+    image: jenkinsci/jenkins:alpine
     volumes:
       - /home/ddot/jenkins_home:/var/jenkins_home
       - /home/ddot/nginx/www:/www
