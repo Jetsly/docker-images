@@ -16,6 +16,19 @@ services:
       - front 
       - back
 
+  jenkins:
+    image: jenkins:alpine
+    volumes:
+      - /home/ddot/jenkins_home:/var/jenkins_home
+      - /home/ddot/nginx/www:/www
+    links: 
+      - sinopia:mysinopia  
+    expose:
+      - "8080"
+      - "50000" 
+    networks:
+      - back  
+
   sinopia:
     image: keyvanfatehi/sinopia
     volumes:
@@ -24,17 +37,6 @@ services:
       - /home/ddot/sinopia/htpasswd:/opt/sinopia/htpasswd
     expose:
       - "4873" 
-    networks:
-      - back  
-
-  jenkins:
-    image: jenkins:alpine
-    volumes:
-      - /home/ddot/jenkins_home:/var/jenkins_home
-      - /home/ddot/nginx/www:/www
-    expose:
-      - "8080"
-      - "50000" 
     networks:
       - back  
 
