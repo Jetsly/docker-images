@@ -1,7 +1,7 @@
 FROM jenkinsci/jenkins:alpine
 ENV NPM_CONFIG_LOGLEVEL info
 ENV NODE_VERSION 7.9.0
-
+USER root
 RUN addgroup -g 1000 node \
     && adduser -u 1000 -G node -s /bin/sh -D node \
     && apk add --no-cache \
