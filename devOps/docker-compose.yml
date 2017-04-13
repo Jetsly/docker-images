@@ -19,7 +19,7 @@ services:
       - back
 
   jenkins:
-    image: jenkinsnode:7.9
+    image: jenkinsnode:7
     volumes:
       - /home/ddot/jenkins_home:/var/jenkins_home
       - /home/ddot/nginx/www:/www
