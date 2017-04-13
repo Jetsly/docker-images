@@ -1,7 +1,5 @@
 #!/bin/bash
 export NODE_VERSION=7.9.0
-addgroup -g 1000 node 
-adduser -u 1000 -G node -s /bin/sh -D node 
 apk add --no-cache libstdc++ 
 apk add --no-cache --virtual .build-deps \
         binutils-gold \
