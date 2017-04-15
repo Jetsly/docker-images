@@ -6,7 +6,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "50000:50000"
+      - "4873:4873"
     links: 
       - jenkins:myjenkins  
       - sinopia:mysinopia
