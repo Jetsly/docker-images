@@ -14,3 +14,10 @@ sudo docker exec -it 79e80e83dac1 sh
 ssh-keygen -t rsa -C "diandi@in66.com"
 cat ~/.ssh/id_rsa.pub 
 ```
+
+## gitlab
+1. 安装`Gitlab Hook Plugin`
+2. 配置`webhook`
+```
+http://jenkins.dot.com/gitlab/build_now/:project_name
+```
