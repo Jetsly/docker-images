@@ -38,17 +38,18 @@ RUN apk add --no-cache curl \
 
 # 下载 GeckoDriver
 # https://github.com/mozilla/geckodriver/releases
-ENV GECKO_DRIVER_VERSION 0.15.0
-RUN apk add --no-cache curl \
-    && curl -SLO "https://github.com/mozilla/geckodriver/releases/download/v$GECKO_DRIVER_VERSION/geckodriver-v$GECKO_DRIVER_VERSION-linux64.tar.gz" \
-    && tar -xf "geckodriver-v$GECKO_DRIVER_VERSION-linux64.tar.gz" 
+# ENV GECKO_DRIVER_VERSION 0.15.0
+# RUN apk add --no-cache curl \
+#     && curl -SLO "https://github.com/mozilla/geckodriver/releases/download/v$GECKO_DRIVER_VERSION/geckodriver-v$GECKO_DRIVER_VERSION-linux64.tar.gz" \
+#     && tar -xf "geckodriver-v$GECKO_DRIVER_VERSION-linux64.tar.gz" 
 
 # 下载 ChromeDriver
 # https://sites.google.com/a/chromium.org/chromedriver/downloads
-ENV CHROME_DRIVER_VERSION 2.29
-RUN apk add --no-cache curl \
-    && curl -SLO "https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip" \
-    && unzip "chromedriver_linux64.zip" 
+# ENV CHROME_DRIVER_VERSION 2.29
+# RUN apk add --no-cache curl \
+#     && curl -SLO "https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip" \
+#     && unzip "chromedriver_linux64.zip" 
+RUN apk add --no-cache  --update chromium chromium-chromedriver
 
 # 下载 Microsoft WebDriver (only win)
 # ENV WEB_DRIVER_VERSION 7u121
