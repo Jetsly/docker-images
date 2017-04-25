@@ -1,6 +1,6 @@
 # docker-images
 
 ```shell
-$ docker  build -t react-native-andr .
-$ docker run -it --rm -v ${PWD}:/usr/src/app react-native-andr sh
+$ docker pull diandi/android-rn-alpine
+$ docker run -it --rm -v ${PWD}:/usr/src/app diandi/android-rn-alpine sh
 ```

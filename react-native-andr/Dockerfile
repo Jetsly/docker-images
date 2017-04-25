@@ -23,6 +23,9 @@ RUN set -x \
 		openjdk8="$JAVA_ALPINE_VERSION" \
 	&& [ "$JAVA_HOME" = "$(docker-java-home)" ]
 
+
+RUN mkdir /opt
+
 # Installs Android SDK
 # https://hub.docker.com/r/bwits/android-sdk-alpine/~/dockerfile/
 ENV ANDROID_SDK_FILENAME android-sdk_r23.0.2-linux.tgz
@@ -35,7 +38,7 @@ ENV ANDROID_HOME /opt/android-sdk-linux
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
 RUN apk update  && \
-    mkdir /opt && cd /opt && \
+    cd /opt && \
     wget -q ${ANDROID_SDK_URL} && \
     tar -xzf ${ANDROID_SDK_FILENAME} && \
     rm ${ANDROID_SDK_FILENAME} && \
@@ -71,10 +74,8 @@ RUN set -o errexit -o nounset \
 	&& echo "Installing Gradle" \
 	&& unzip gradle.zip \
 	&& rm gradle.zip \
-	&& mkdir /opt \
 	&& mv "gradle-${GRADLE_VERSION}" "${GRADLE_HOME}/" \
 	&& ln -s "${GRADLE_HOME}/bin/gradle" /usr/bin/gradle \
-	\
 	&& apk del .build-deps
 
 
