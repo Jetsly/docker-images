@@ -30,6 +30,9 @@ ENV ANDROID_SDK_URL http://dl.google.com/android/${ANDROID_SDK_FILENAME}
 ENV ANDROID_API_LEVELS android-15,android-16,android-17,android-18,android-19,android-20,android-21 
 ENV ANDROID_BUILD_TOOLS_VERSION 21.1.0
 ENV ANDROID_SDK_FILter tools,platform-tools,${ANDROID_API_LEVELS},build-tools-${ANDROID_BUILD_TOOLS_VERSION}
+# Setup environment
+ENV ANDROID_HOME /opt/android-sdk-linux
+ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
 RUN apk update  && \
     mkdir /opt && cd /opt && \
@@ -38,10 +41,6 @@ RUN apk update  && \
     rm ${ANDROID_SDK_FILENAME} && \
     echo y | android update sdk --no-ui -a --filter ${ANDROID_SDK_FILter} --no-https && \
     rm /var/cache/apk/*    
-
-# Setup environment
-ENV ANDROID_HOME /opt/android-sdk-linux
-ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
 
 # install gradle
