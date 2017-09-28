@@ -36,6 +36,7 @@ services:
     volumes:
       - /home/ddot/verdaccio/config.yaml:/verdaccio/conf/config.yaml
       - /home/ddot/verdaccio/htpasswd:/verdaccio/conf/htpasswd
+      - /home/ddot/verdaccio/storage:/verdaccio/storage
     expose:
       - "4873" 
     networks:
