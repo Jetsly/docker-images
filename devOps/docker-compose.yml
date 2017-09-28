@@ -9,7 +9,7 @@ services:
       - "4873:4873"
     links: 
       - jenkins:myjenkins  
-      - sinopia:mysinopia
+      - verdaccio:mysinopia
     volumes:
       - /home/ddot/nginx/conf:/etc/nginx/conf.d
       - /home/ddot/nginx/cert:/etc/nginx/cert
@@ -24,19 +24,19 @@ services:
       - /home/ddot/jenkins_home:/var/jenkins_home
       - /home/ddot/nginx/www:/www
     links: 
-      - sinopia:mysinopia  
+      - verdaccio:mysinopia  
     expose:
       - "8080"
       - "50000" 
     networks:
       - back  
 
-  sinopia:
-    image: keyvanfatehi/sinopia
+  verdaccio:
+    image: verdaccio/verdaccio
     volumes:
-      - /home/ddot/sinopia/config.yaml:/opt/sinopia/config.yaml
-      - /home/ddot/sinopia/storage:/opt/sinopia/storage
-      - /home/ddot/sinopia/htpasswd:/opt/sinopia/htpasswd
+      - /home/ddot/verdaccio/config.yaml:/verdaccio/conf/config.yaml
+      - /home/ddot/verdaccio/htpasswd:/verdaccio/conf/htpasswd
+      - /home/ddot/verdaccio/storage:/verdaccio/storage
     expose:
       - "4873" 
     networks:
