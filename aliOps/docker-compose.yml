@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  web:
+    image: nginx:1.14.2-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    links: 
+      - ghost:myghost
+    volumes:
+      - /usr/me/nginx/conf:/etc/nginx/conf.d
+      - /usr/me/nginx/cert:/etc/nginx/cert
+    networks:
+      - front 
+
+  ghost:
+    image: ghost:2.14.3-alpine
+    restart: always
+    ports:
+      - 8080:2368
+    networks:
+      - front   
+
+networks:
+  front:
+    driver: bridge
