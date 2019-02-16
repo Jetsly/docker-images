@@ -25,7 +25,6 @@ services:
       - "2368" 
     environment:
       url: https://me.ddot.ink
-
     networks:
       - front
 
