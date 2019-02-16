@@ -19,14 +19,13 @@ services:
     image: ghost:2.14.3-alpine
     restart: always
     container_name: ghost
-    environment:
-       url: https://me.ddot.ink
     volumes:
-      - /usr/me/ghost:/var/lib/ghost/content
+      - /usr/me/ghost/content:/var/lib/ghost/content
     expose:
       - "2368" 
     environment:
-      - NODE_ENV:production
+      url: https://me.ddot.ink
+
     networks:
       - front
 
