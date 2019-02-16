@@ -6,22 +6,24 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    restart: always
     links: 
-      - ghost:myghost
+      - ghost
     volumes:
       - /usr/me/nginx/conf:/etc/nginx/conf.d
       - /usr/me/nginx/cert:/etc/nginx/cert
+    container_name: nginx-host
     networks:
-      - front 
+      - front
 
   ghost:
     image: ghost:2.14.3-alpine
     restart: always
-    ports:
-      - 8080:2368
+    container_name: ghost
+    environment:
+      - NODE_ENV:production
     networks:
-      - front   
+      - front
 
 networks:
   front:
-    driver: bridge
