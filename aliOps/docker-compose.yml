@@ -3,6 +3,7 @@ version: '3.7'
 services:
   web:
     image: nginx:1.14.2-alpine
+    command: [nginx-debug, '-g', 'daemon off;']
     ports:
       - "80:80"
       - "443:443"
@@ -18,8 +19,10 @@ services:
     image: ghost:2.14.3-alpine
     restart: always
     container_name: ghost
-    ports:
-      - "8080:2368"
+    volumes:
+      - /usr/me/ghost:/var/lib/ghost/content
+    expose:
+      - "2368" 
     environment:
       - NODE_ENV:production
     networks:
