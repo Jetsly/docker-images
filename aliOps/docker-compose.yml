@@ -20,7 +20,7 @@ services:
     restart: always
     container_name: ghost
     environment:
-       url: 'https://me.ddot.ink'
+       url: https://me.ddot.ink
     volumes:
       - /usr/me/ghost:/var/lib/ghost/content
     expose:
