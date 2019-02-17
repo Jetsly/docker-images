@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+  web:
+    image: nginx:1.14.2-alpine
+    command: [nginx-debug, '-g', 'daemon off;']
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    volumes:
+      - /usr/me/nginx/conf:/etc/nginx/conf.d
+      - /usr/me/nginx/cert:/etc/nginx/cert
+    container_name: nginx-host
+    networks:
+      - front
+
+  ghost:
+    image: ghost:2.14.3-alpine
+    restart: always
+    container_name: ghost
+    volumes:
+      - /usr/me/ghost-content:/var/lib/ghost/content
+    expose:
+      - "2368"
+    environment:
+      url: http://me.ddot.ink
+      mail__from: ddot.ink <ghost@ddot.ink>
+      mail__transport: SMTP
+      mail__options__host: smtp.mxhichina.com
+      mail__options__secureConnection: "true"
+      mail__options__port: 465
+      mail__options__auth__user: ****
+      mail__options__auth__pass: ****
+    networks:
+      - front
+
+networks:
+  front:
