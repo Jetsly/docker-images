@@ -20,11 +20,18 @@ services:
     restart: always
     container_name: ghost
     volumes:
-      - /usr/me/ghost/content:/var/lib/ghost/content
+      - /usr/me/ghost-content:/var/lib/ghost/content
     expose:
-      - "2368" 
+      - "2368"
     environment:
-      url: https://me.ddot.ink
+      url: http://me.ddot.ink
+      mail__from: ddot.ink <ghost@ddot.ink>
+      mail__transport: SMTP
+      mail__options__host: smtp.mxhichina.com
+      mail__options__secureConnection: "true"
+      mail__options__port: 465
+      mail__options__auth__user: ****
+      mail__options__auth__pass: ****
     networks:
       - front
 
